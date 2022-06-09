@@ -28,7 +28,8 @@ public class CadenaServicio {
        
         
         for (cont = 0; cont < longi; cont++){
-            String subCadena = c1.getFrase().substring(cont, cont + 1);
+            String subCadena = "";
+            subCadena += c1.getFrase().charAt(cont);
             if (subCadena.equals("a") || subCadena.equals("e") || subCadena.equals("i") || subCadena.equals("o") || subCadena.equals("u")){
                 contarVocales++;
             }
@@ -37,15 +38,95 @@ public class CadenaServicio {
         return contarVocales;
     }
     
-    public void invertirFrase(Cadena c1){
+    public String invertirFrase(Cadena c1){
         
+        String invertir = "";
         int cont;
         int longi = c1.getFrase().length();
         
-        for (cont = longi - 1; cont == 0; cont--){
-            String subCadena = c1.getFrase().substring(cont, cont - 1);
-            System.out.print("Invertida: " +subCadena);
+        for (cont = longi - 1; cont >= 0; cont--){
+            invertir += c1.getFrase().charAt(cont);
+            
         }
+        return invertir;
+    }
+    
+    public int vecesRepetido(Cadena c1, String letra){
+        
+        int vecesRepetido = 0;
+        String letraCadena;
+        int  cont;
+        int longi = c1.getFrase().length();
+        
+        for (cont = 0; cont < longi; cont++){
+            letraCadena = c1.getFrase().substring(cont, cont + 1);
+            if (letraCadena.equals(letra)){
+                vecesRepetido++;
+            }
+        }
+        
+        return vecesRepetido;
+        
+    }
+    
+    public void compararLongitud(Cadena c1, String fraseUsuario){
+        
+        int longi = c1.getFrase().length();
+        int longiFraseU = fraseUsuario.length();
+        
+        if (longi == longiFraseU){
+            System.out.println("Las cadenas tienen igual longitud.");
+        } else{
+            System.out.println("Las cadenas tienen longitudes diferentes.");
+            System.out.println("Longitud cadena 1: " +longi);
+            System.out.println("Longitud cadena 2: " +longiFraseU);
+        }
+    }
+    
+    public String unirCadenas(Cadena c1, String fraseUsuario){
+        
+        String union;
+        union = c1.getFrase().concat(fraseUsuario);
+        return union;
+    }
+    
+    public void reemplazar(Cadena c1, String caracter){
+        
+        String letra;
+        int  cont;
+        int longi = c1.getFrase().length();
+        
+        for (cont = 0; cont < longi; cont++){
+            letra = c1.getFrase().substring(cont, cont + 1);
+            
+            if (letra.equals("a")){
+                System.out.print(caracter);
+            } else{
+                System.out.print(letra);
+            }
+            
+        }
+        System.out.println("");
+    }
+    
+    public boolean contieneLetra(Cadena c1, String letra){
+        
+        boolean contieneLetra = false;
+        int cont;
+        int longi = c1.getFrase().length();
+        String caracter = "";
+        
+        for (cont = 0; cont < longi; cont++){
+            caracter += c1.getFrase().charAt(cont);
+            
+            if (caracter.equals(letra)){
+                contieneLetra = true;
+            }else {
+                contieneLetra = false;
+            }
+        }
+        
+        return contieneLetra;
         
     }
 }
