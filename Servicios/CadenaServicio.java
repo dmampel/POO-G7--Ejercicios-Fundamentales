@@ -90,11 +90,13 @@ public class CadenaServicio {
         return union;
     }
     
-    public void reemplazar(Cadena c1, String caracter){
+    public void reemplazar(Cadena c1, String caracter, String fraseUsuario){
         
         String letra;
+        String letra2;
         int  cont;
         int longi = c1.getFrase().length();
+        int longi2 = fraseUsuario.length();
         
         for (cont = 0; cont < longi; cont++){
             letra = c1.getFrase().substring(cont, cont + 1);
@@ -107,11 +109,24 @@ public class CadenaServicio {
             
         }
         System.out.println("");
+        
+        for (cont = 0; cont < longi2; cont++){
+            letra2 = fraseUsuario.substring(cont, cont + 1);
+            
+            if (letra2.equals("a")){
+                System.out.print(caracter);
+            } else{
+                System.out.print(letra2);
+            }
+            
+        }
+        
+        System.out.println("");
     }
     
     public boolean contieneLetra(Cadena c1, String letra){
         
-        boolean contieneLetra = false;
+        boolean contieneLetra = true;
         int cont;
         int longi = c1.getFrase().length();
         String caracter = "";
@@ -121,6 +136,7 @@ public class CadenaServicio {
             
             if (caracter.equals(letra)){
                 contieneLetra = true;
+                break;
             }else {
                 contieneLetra = false;
             }
